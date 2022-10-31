@@ -35,7 +35,41 @@
             <div class="calculator">
                 <!-- Inputs section -->
                 <section class="inputs-section">
-                    <labeled-input label="Bill" icon="dollar"></labeled-input>
+                    <labeled-input
+                        label="Bill"
+                        icon="dollar"
+                        placeholder="0"
+                    ></labeled-input>
+
+                    <div class="tip-selector">
+                        <span class="tip-selector__label">Select tip %</span>
+                        <div class="tip-selector__buttons">
+                            <tip-button value="5"></tip-button>
+                            <tip-button value="10"></tip-button>
+                            <tip-button value="15"></tip-button>
+                            <tip-button value="25"></tip-button>
+                            <tip-button value="50"></tip-button>
+                            <labeled-input
+                                class="custom-tip-input"
+                                placeholder="Custom"
+                                maxLength="2"
+                            ></labeled-input>
+                        </div>
+                    </div>
+
+                    <labeled-input
+                        label="Number of People"
+                        icon="person"
+                        placeholder="0"
+                    ></labeled-input>
+                </section>
+
+                <!-- Outputs section -->
+                <section class="outputs-section">
+                    <div class="results-cont"></div>
+
+                    <!-- Reset Button component -->
+                    <button class="reset-button" disabled>Reset</button>
                 </section>
             </div>
         </main>
