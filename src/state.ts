@@ -79,6 +79,20 @@ export const state = {
         return { individualTip, individualTotal };
     },
 
+    // Restart values method
+    restartValues() {
+        // Get the current state
+        const currentState = this.getState();
+
+        // Change
+        currentState.bill = 0;
+        currentState.tipPercentage = 0;
+        currentState.people = 0;
+
+        // Set
+        this.setState(currentState);
+    },
+
     // Subscribe method
     subscribe(cbFunction: (any: any) => any) {
         this.listeners.push(cbFunction);

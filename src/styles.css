@@ -135,8 +135,3 @@ body {
 .reset-button:hover {
     opacity: 0.8;
 }
-
-.reset-button:disabled {
-    opacity: 0.35;
-    cursor: not-allowed;
-}

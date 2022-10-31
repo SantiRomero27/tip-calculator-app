@@ -30,8 +30,10 @@ function displayResults(resultsContainerEl: Element): void {
     const tipOptions = document.querySelector(
         ".tip-selector__buttons"
     ).children;
+    const tipButtons = document.querySelectorAll("tip-button");
     const inputsArray = document.querySelectorAll("labeled-input");
     const resultsContEl: Element = document.querySelector(".results-cont");
+    const resetButtonEl = document.querySelector(".reset-button");
 
     // Input handlers
     inputsArray.forEach((inputEl) => {
@@ -91,6 +93,33 @@ function displayResults(resultsContainerEl: Element): void {
             state.updateTip(tipValue);
         });
     }
+
+    // Reset button handler
+    resetButtonEl.addEventListener("click", () => {
+        // Clear the inputs
+        inputsArray.forEach((inputEl) => {
+            // Get the input from the shadow DOM
+            const shadowInputEl = inputEl.shadowRoot.querySelector("input");
+
+            // Delete
+            inputEl.removeAttribute("selected");
+            shadowInputEl.value = "";
+        });
+
+        // Clear the selected buttons
+        tipButtons.forEach((button) => {
+            // Get the shadow button
+            const shadowButtonEl =
+                button.shadowRoot.querySelector(".button-el");
+
+            // Change the button state
+            button.removeAttribute("selected");
+            shadowButtonEl.classList.remove("selected");
+        });
+
+        // Restart the state values
+        state.restartValues();
+    });
 
     // Display results for the first time
     displayResults(resultsContEl);
